@@ -6,6 +6,7 @@ A free bilingual checklist builder for holidays, business trips, road trips and 
 
 - Russian and English interface and content
 - Step-by-step trip builder
+- Searchable catalog of 37 countries plus an international checklist
 - Checklist generation from duration, country, trip type, season and transport
 - Carry-on, luggage, child, pet and work equipment options
 - Persistent progress and custom items through `localStorage`

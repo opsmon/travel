@@ -32,7 +32,7 @@ export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
   ];
   const [titleKey, textKey] = stepKeys[step];
   const normalizedCountryQuery = countryQuery.trim().toLocaleLowerCase(locale);
-  const visibleCountries = normalizedCountryQuery
+  const matchingCountries = normalizedCountryQuery
     ? countries.filter((country) => [
         country.id,
         country.title.ru,
@@ -41,6 +41,11 @@ export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
         country.description.en,
       ].some((value) => value.toLocaleLowerCase(locale).includes(normalizedCountryQuery)))
     : countries;
+  const visibleCountries = [...matchingCountries].sort((first, second) => {
+    if (first.id === "INTL") return -1;
+    if (second.id === "INTL") return 1;
+    return first.title[locale].localeCompare(second.title[locale], locale);
+  });
 
   const choose = (field: keyof TripConfig, id: string) => {
     onChange({ ...config, [field]: id });
@@ -89,25 +94,25 @@ export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
                 </label>
               )}
               <div className={`option-grid ${step === 0 ? "country-grid" : ""}`}>
-              {(step === 0 ? visibleCountries : optionGroups[step].options).map((option) => {
-                const selected = config[optionGroups[step].field] === option.id;
-                return (
-                  <button
-                    className={`option-card ${selected ? "selected" : ""}`}
-                    type="button"
-                    key={option.id}
-                    aria-pressed={selected}
-                    onClick={() => choose(optionGroups[step].field, option.id)}
-                  >
-                    <span className="option-symbol" aria-hidden="true">{option.symbol}</span>
-                    <span className="option-copy">
-                      <strong>{option.title[locale]}</strong>
-                      <small>{option.description[locale]}</small>
-                    </span>
-                    <span className="option-check" aria-hidden="true">✓</span>
-                  </button>
-                );
-              })}
+                {(step === 0 ? visibleCountries : optionGroups[step].options).map((option) => {
+                  const selected = config[optionGroups[step].field] === option.id;
+                  return (
+                    <button
+                      className={`option-card ${selected ? "selected" : ""}`}
+                      type="button"
+                      key={option.id}
+                      aria-pressed={selected}
+                      onClick={() => choose(optionGroups[step].field, option.id)}
+                    >
+                      <span className="option-symbol" aria-hidden="true">{option.symbol}</span>
+                      <span className="option-copy">
+                        <strong>{option.title[locale]}</strong>
+                        <small>{option.description[locale]}</small>
+                      </span>
+                      <span className="option-check" aria-hidden="true">✓</span>
+                    </button>
+                  );
+                })}
               </div>
               {step === 0 && visibleCountries.length === 0 && <p className="country-empty">{t(locale, "noCountries")}</p>}
             </>
