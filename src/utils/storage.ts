@@ -18,7 +18,7 @@ export const defaultTrip: TripConfig = {
 export function detectLocale(): Locale {
   const urlLocale = new URLSearchParams(window.location.search).get("lang");
   if (urlLocale === "ru" || urlLocale === "en") return urlLocale;
-  return navigator.language.toLowerCase().startsWith("ru") ? "ru" : "en";
+  return "en";
 }
 
 export function loadState(): StoredState {

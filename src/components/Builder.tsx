@@ -22,6 +22,7 @@ const stepKeys = [
 
 export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
   const [step, setStep] = useState(0);
+  const [countryQuery, setCountryQuery] = useState("");
   const optionGroups: { options: Option[]; field: keyof TripConfig }[] = [
     { options: countries, field: "country" },
     { options: durations, field: "duration" },
@@ -30,6 +31,16 @@ export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
     { options: transports, field: "transport" },
   ];
   const [titleKey, textKey] = stepKeys[step];
+  const normalizedCountryQuery = countryQuery.trim().toLocaleLowerCase(locale);
+  const visibleCountries = normalizedCountryQuery
+    ? countries.filter((country) => [
+        country.id,
+        country.title.ru,
+        country.title.en,
+        country.description.ru,
+        country.description.en,
+      ].some((value) => value.toLocaleLowerCase(locale).includes(normalizedCountryQuery)))
+    : countries;
 
   const choose = (field: keyof TripConfig, id: string) => {
     onChange({ ...config, [field]: id });
@@ -61,8 +72,24 @@ export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
           </div>
 
           {step < optionGroups.length ? (
-            <div className={`option-grid ${step === 0 ? "country-grid" : ""}`}>
-              {optionGroups[step].options.map((option) => {
+            <>
+              {step === 0 && (
+                <label className="country-search">
+                  <span>{t(locale, "countrySearch")}</span>
+                  <div>
+                    <span aria-hidden="true">⌕</span>
+                    <input
+                      type="search"
+                      value={countryQuery}
+                      placeholder={t(locale, "countrySearchPlaceholder")}
+                      onChange={(event) => setCountryQuery(event.target.value)}
+                    />
+                    <small>{visibleCountries.length}</small>
+                  </div>
+                </label>
+              )}
+              <div className={`option-grid ${step === 0 ? "country-grid" : ""}`}>
+              {(step === 0 ? visibleCountries : optionGroups[step].options).map((option) => {
                 const selected = config[optionGroups[step].field] === option.id;
                 return (
                   <button
@@ -81,7 +108,9 @@ export function Builder({ locale, config, onChange, onFinish }: BuilderProps) {
                   </button>
                 );
               })}
-            </div>
+              </div>
+              {step === 0 && visibleCountries.length === 0 && <p className="country-empty">{t(locale, "noCountries")}</p>}
+            </>
           ) : (
             <div className="option-grid extras-grid">
               {(["carryOn", "luggage", "child", "pet", "workTech"] as const).map((field, index) => {

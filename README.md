@@ -59,7 +59,7 @@ Every content record uses:
 { ru: "Паспорт", en: "Passport" }
 ```
 
-Interface strings live in `src/i18n.ts`. A new item is complete only when both locales are present. The first visit follows `navigator.language`; a manual choice is saved.
+Interface strings live in `src/i18n.ts`. A new item is complete only when both locales are present. English is used on the first visit; an explicit `?lang=ru` or a saved manual choice switches the interface to Russian.
 
 ## Content updates
 
