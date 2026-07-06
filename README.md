@@ -2,6 +2,8 @@
 
 A free bilingual checklist builder for holidays, business trips, road trips and long-term relocation. The app is fully static, stores progress in the browser and is ready for GitHub Pages.
 
+Link = [travel](https://opsmon.github.io/travel/)
+
 ## Features
 
 - Russian and English interface and content
