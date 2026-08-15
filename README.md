@@ -2,7 +2,7 @@
 
 A free bilingual checklist builder for holidays, business trips, road trips and long-term relocation. The app is fully static, stores progress in the browser and is ready for GitHub Pages.
 
-Link = [travel](https://opsmon.github.io/travel/)
+Website: [https://opsmon.github.io/travel/](https://opsmon.github.io/travel/)
 
 ## Features
 
@@ -18,7 +18,7 @@ Link = [travel](https://opsmon.github.io/travel/)
 
 ## Stack
 
-React 19, TypeScript, Vite and plain CSS. No backend, accounts, paid APIs or UI framework.
+Svelte 5, TypeScript, Vite and plain CSS. No backend, accounts, paid APIs or UI framework.
 
 ## Local development
 
@@ -33,6 +33,7 @@ Open the URL printed by Vite.
 
 ```bash
 npm run lint
+npm run check
 npm run build
 npm run preview
 ```
@@ -43,11 +44,11 @@ The production build is written to `dist/`.
 
 ```text
 src/
-  components/   UI sections
+  components/   Svelte UI sections
   data/         countries, options, templates and checklist items
   utils/        checklist generation and persisted state
-  i18n.ts       interface translations
-  types.ts      shared data contracts
+  i18n.svelte   interface translations
+  types.svelte  shared data contracts
 public/         favicon, social preview, robots and sitemap
 .github/        GitHub Pages workflow
 ```
@@ -62,13 +63,26 @@ Every content record uses:
 { ru: "Паспорт", en: "Passport" }
 ```
 
-Interface strings live in `src/i18n.ts`. A new item is complete only when both locales are present. English is used on the first visit; an explicit `?lang=ru` or a saved manual choice switches the interface to Russian.
+Interface strings live in `src/i18n.svelte`. A new item is complete only when both locales are present. English is used on the first visit; an explicit `?lang=ru` or a saved manual choice switches the interface to Russian.
 
 ## Content updates
 
-Countries and recommendations live in `src/data/countries.ts`. Durations, trip types, seasons and transport live in `src/data/options.ts`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete editing guide.
+Countries and recommendations live in `src/data/countries.svelte`. Durations, trip types, seasons and transport live in `src/data/options.svelte`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete editing guide.
 
 Country guidance is deliberately phrased as a prompt to verify official requirements. Keep `sourceUrl` and `lastReviewed` current whenever recommendations change.
+
+## Country Data
+
+The catalog currently includes 37 countries plus the international fallback list. Country records were reviewed on **2026-08-15** and point users to official or aviation-industry sources instead of duplicating visa rules that may change quickly.
+
+Key source updates:
+
+- International fallback: [IATA Travel Centre](https://www.iata.org/en/travel-centre/)
+- United Kingdom: [GOV.UK visa check](https://www.gov.uk/check-uk-visa) and [GOV.UK ETA check](https://www.gov.uk/check-eta)
+- Thailand: [Ministry of Foreign Affairs consular update](https://consular.mfa.go.th/th/content/20-5-69-0000?menu=5d68c88b15e39c160c008175&page=5d68c88b15e39c160c008173)
+- Singapore: [Immigration & Checkpoints Authority visitor guidance](https://www.ica.gov.sg/public-education/visiting-singapore)
+
+The checklist intentionally says "check entry rules" rather than promising a fixed stay length, visa exemption or medication allowance. Users should verify requirements close to departure through the linked official source, their airline and the destination's consulate.
 
 ## Browser storage
 
@@ -81,7 +95,7 @@ State is stored under `travel-checklist-state` with schema version `1`. It inclu
 3. Push to `main` or run **Deploy to GitHub Pages** manually under Actions.
 4. Open the URL shown in the completed `deploy` job.
 
-Vite uses `base: "./"`, so assets work under a repository subpath without hard-coding the repository name. Update the placeholder URLs in `public/robots.txt`, `public/sitemap.xml` and the canonical/alternate links in `index.html` for the final public address.
+Vite uses `base: "./"`, so assets work under the `/travel/` repository subpath. Canonical, alternate, sitemap and robots URLs point to [https://opsmon.github.io/travel/](https://opsmon.github.io/travel/).
 
 ## Static-site limitations
 

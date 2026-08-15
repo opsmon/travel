@@ -1,4 +1,5 @@
-import type { Locale } from "./types";
+<script context="module" lang="ts">
+import type { Locale } from "./types.svelte";
 
 const dictionary = {
   ru: {
@@ -213,3 +214,5 @@ export function formatItemCount(locale: Locale, count: number): string {
   const noun = form === "one" ? "пункт" : form === "few" ? "пункта" : "пунктов";
   return `${count} ${noun}`;
 }
+
+</script>

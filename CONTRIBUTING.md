@@ -4,7 +4,7 @@ Travel Checklist is content-driven. Keep UI components generic and add travel kn
 
 ## Add a country
 
-Add an `Option` to `src/data/countries.ts`:
+Add an `Option` to `src/data/countries.svelte`:
 
 ```ts
 {
@@ -24,7 +24,7 @@ Use a stable ISO code where possible. A new country needs no checklist or compon
 
 ## Add other options
 
-Add entries to the matching collection in `src/data/options.ts`:
+Add entries to the matching collection in `src/data/options.svelte`:
 
 - `durations`
 - `tripTypes`
@@ -33,12 +33,12 @@ Add entries to the matching collection in `src/data/options.ts`:
 
 Each entry needs a stable `id`, bilingual title and description, a short symbol, and an `items` array.
 
-Regions can use the same `Option` shape in `countries.ts` or be moved to a separate catalog if filtering by region is introduced.
+Regions can use the same `Option` shape in `countries.svelte` or be moved to a separate catalog if filtering by region is introduced.
 
 ## Add a category
 
-1. Add its stable ID to `CategoryId` in `src/types.ts`.
-2. Add the bilingual label to `categories` in `src/data/common.ts`.
+1. Add its stable ID to `CategoryId` in `src/types.svelte`.
+2. Add the bilingual label to `categories` in `src/data/common.svelte`.
 3. Place it in the desired display order.
 
 The checklist automatically hides empty categories.
@@ -73,13 +73,13 @@ Use official government, embassy, airline or transport sources. Avoid presenting
 
 ## Add a template
 
-Add a record to `src/data/templates.ts`. `config` may contain any subset of `TripConfig`; unspecified values retain the user's current configuration.
+Add a record to `src/data/templates.svelte`. `config` may contain any subset of `TripConfig`; unspecified values retain the user's current configuration.
 
 ## Translation rules
 
 - Always add Russian and natural English together.
 - Do not translate brands or international abbreviations.
-- Keep UI text in `src/i18n.ts`, not inside components.
+- Keep UI text in `src/i18n.svelte`, not inside components.
 - Check long strings at 320 px and 390 px.
 - Custom user items intentionally retain the entered language.
 

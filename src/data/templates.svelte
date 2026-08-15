@@ -1,5 +1,6 @@
-import type { Template } from "../types";
-import { l } from "./helpers";
+<script context="module" lang="ts">
+import type { Template } from "../types.svelte";
+import { l } from "./helpers.svelte";
 
 export const templates: Template[] = [
   { id: "weekend", title: l("Поездка на выходные", "Weekend trip"), description: l("Самое нужное для короткой поездки.", "The essentials for a short getaway."), meta: l("2–3 дня", "2–3 days"), symbol: "02", config: { duration: "weekend", tripType: "tourism" } },
@@ -23,3 +24,5 @@ export const templates: Template[] = [
   { id: "australia", title: l("Поездка в Австралию", "Trip to Australia"), description: l("Долгий перелет, солнце и биобезопасность.", "A long flight, strong sun and biosecurity."), meta: l("Австралия", "Australia"), symbol: "AU", config: { country: "AU", duration: "two-weeks", tripType: "tourism", season: "summer", transport: "plane" } },
   { id: "portugal", title: l("Поездка в Португалию", "Trip to Portugal"), description: l("Океан, холмы и городские маршруты.", "Ocean, hills and city routes."), meta: l("Португалия", "Portugal"), symbol: "PT", config: { country: "PT", duration: "one-week", tripType: "tourism", transport: "plane" } },
 ];
+
+</script>

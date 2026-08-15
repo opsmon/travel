@@ -1,4 +1,5 @@
-import type { CategoryId, ChecklistItem, Localized } from "../types";
+<script context="module" lang="ts">
+import type { CategoryId, ChecklistItem, Localized } from "../types.svelte";
 
 export const l = (ru: string, en: string): Localized => ({ ru, en });
 
@@ -17,3 +18,5 @@ export const item = (
     ? { description: l(ruDescription, enDescription) }
     : {}),
 });
+
+</script>

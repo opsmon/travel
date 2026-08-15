@@ -1,7 +1,8 @@
-import type { Option } from "../types";
-import { item, l } from "./helpers";
+<script context="module" lang="ts">
+import type { Option } from "../types.svelte";
+import { item, l } from "./helpers.svelte";
 
-const reviewed = "2026-06-14";
+const reviewed = "2026-08-15";
 const verify = (id: string, ru: string, en: string, sourceUrl: string) => ({
   ...item(id, "documents", ru, en, "Проверьте актуальные требования на официальном сайте", "Verify current requirements on an official website"),
   sourceUrl,
@@ -12,7 +13,7 @@ export const countries: Option[] = [
   {
     id: "INTL", title: l("Универсальный список", "International"), description: l("Страна пока не выбрана", "Destination not selected"), symbol: "◎",
     lastReviewed: reviewed, items: [
-      verify("entry-rules", "Проверить правила въезда", "Check entry requirements", "https://www.iatatravelcentre.com/"),
+      verify("entry-rules", "Проверить правила въезда", "Check entry requirements", "https://www.iata.org/en/travel-centre/"),
       item("travel-adapter-check", "electronics", "Проверить тип розеток", "Check socket type"),
       item("payment-check", "money", "Проверить способы оплаты", "Check payment options"),
     ],
@@ -77,8 +78,8 @@ export const countries: Option[] = [
   },
   {
     id: "TH", title: l("Таиланд", "Thailand"), description: l("Тропики и острова", "Tropics and islands"), symbol: "TH",
-    sourceUrl: "https://www.mfa.go.th/", lastReviewed: reviewed, items: [
-      verify("th-entry", "Проверить правила въезда", "Check entry rules", "https://www.mfa.go.th/"),
+    sourceUrl: "https://consular.mfa.go.th/th/content/20-5-69-0000?menu=5d68c88b15e39c160c008175&page=5d68c88b15e39c160c008173", lastReviewed: reviewed, items: [
+      verify("th-entry", "Проверить актуальный визовый режим", "Check the current visa scheme", "https://consular.mfa.go.th/th/content/20-5-69-0000?menu=5d68c88b15e39c160c008175&page=5d68c88b15e39c160c008173"),
       item("th-repellent", "health", "Средство от насекомых", "Insect repellent"),
       item("th-esim", "arrival", "SIM-карта или eSIM", "SIM card or eSIM"),
       item("th-rain", "luggage", "Легкая защита от дождя", "Light rain protection"),
@@ -162,6 +163,7 @@ export const countries: Option[] = [
     id: "GB", title: l("Великобритания", "United Kingdom"), description: l("История, города и побережье", "History, cities and coast"), symbol: "GB",
     sourceUrl: "https://www.gov.uk/check-uk-visa", lastReviewed: reviewed, items: [
       verify("gb-entry", "Проверить визу или электронное разрешение", "Check visa or electronic travel authorisation", "https://www.gov.uk/check-uk-visa"),
+      verify("gb-eta", "Проверить необходимость ETA", "Check if you need an ETA", "https://www.gov.uk/check-eta"),
       item("gb-adapter", "electronics", "Переходник для британской розетки", "UK power adapter"),
       item("gb-weather", "clothes", "Водостойкий слой для переменчивой погоды", "Waterproof layer for changeable weather"),
       item("gb-left-driving", "car", "Учесть левостороннее движение", "Prepare for left-hand traffic"),
@@ -335,3 +337,5 @@ export const countries: Option[] = [
     ],
   },
 ];
+
+</script>

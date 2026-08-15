@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR_GITHUB_USERNAME.github.io/travel-checklist/sitemap.xml
+Sitemap: https://opsmon.github.io/travel/sitemap.xml

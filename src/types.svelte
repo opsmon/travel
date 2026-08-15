@@ -1,3 +1,4 @@
+<script context="module" lang="ts">
 export type Locale = "ru" | "en";
 export type Localized = Record<Locale, string>;
 
@@ -80,3 +81,5 @@ export interface Template {
   symbol: string;
   config: Partial<TripConfig>;
 }
+
+</script>
