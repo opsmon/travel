@@ -1,5 +1,6 @@
-import type { CategoryId, ChecklistItem } from "../types";
-import { item, l } from "./helpers";
+<script context="module" lang="ts">
+import type { CategoryId, ChecklistItem } from "../types.svelte";
+import { item, l } from "./helpers.svelte";
 
 export const categories: { id: CategoryId; title: ReturnType<typeof l> }[] = [
   { id: "documents", title: l("Документы", "Documents") },
@@ -97,3 +98,5 @@ export const extraItems = {
     item("presentation", "work", "Презентации и рабочие документы", "Presentations and work documents"),
   ],
 };
+
+</script>

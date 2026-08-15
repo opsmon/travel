@@ -1,4 +1,5 @@
-import type { Locale, StoredState, TripConfig } from "../types";
+<script context="module" lang="ts">
+import type { Locale, StoredState, TripConfig } from "../types.svelte";
 
 export const STORAGE_KEY = "travel-checklist-state";
 
@@ -81,3 +82,5 @@ export function saveState(state: StoredState): void {
     // The app remains usable when storage is unavailable.
   }
 }
+
+</script>

@@ -1,7 +1,8 @@
-import { commonItems, extraItems } from "../data/common";
-import { countries } from "../data/countries";
-import { durations, seasons, transports, tripTypes } from "../data/options";
-import type { ChecklistItem, CustomItem, TripConfig } from "../types";
+<script context="module" lang="ts">
+import { commonItems, extraItems } from "../data/common.svelte";
+import { countries } from "../data/countries.svelte";
+import { durations, seasons, transports, tripTypes } from "../data/options.svelte";
+import type { ChecklistItem, CustomItem, TripConfig } from "../types.svelte";
 
 const itemsFor = (options: { id: string; items: ChecklistItem[] }[], id: string) =>
   options.find((option) => option.id === id)?.items ?? [];
@@ -37,3 +38,5 @@ export function createChecklist(
   });
   return [...merged.values()];
 }
+
+</script>

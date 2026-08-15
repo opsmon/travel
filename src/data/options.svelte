@@ -1,5 +1,6 @@
-import type { Option } from "../types";
-import { item, l } from "./helpers";
+<script context="module" lang="ts">
+import type { Option } from "../types.svelte";
+import { item, l } from "./helpers.svelte";
 
 export const durations: Option[] = [
   {
@@ -184,3 +185,5 @@ export const transports: Option[] = [
     item("bus-stop", "bookings", "Проверить место отправления", "Check the departure stop"),
   ] },
 ];
+
+</script>
