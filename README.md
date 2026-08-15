@@ -146,15 +146,16 @@ Vite uses `base: "./"`, so assets work under the `/travel/` repository subpath. 
 
 Progress is local to one browser and is not synchronised between devices. Shared links include trip parameters only; they never include completed or custom items. Entry and medication information can change and must be checked through official sources.
 
-## Possible next steps
+## Идеи фич
 
-- PWA/offline mode with install prompt and cached country data.
-- Multiple saved trips with names, dates and quick duplication.
-- Text, Markdown and PDF export.
-- Approximate baggage weight and volume estimate.
-- Family/shared checklist mode with invite links.
-- Country policy freshness badges and "review overdue" warnings.
-- Medicine/import rules quick links by country.
-- Calendar reminders for documents, insurance, check-in and visas.
-- Optional packing categories for hiking, skiing, diving and festivals.
-- Additional languages.
+- Экспорт списка в текст, Markdown и PDF.
+- Примерная оценка веса и объема багажа.
+- Семейный или общий чеклист с invite-ссылками.
+- Индикаторы актуальности страновых правил и предупреждения "пора перепроверить".
+- Быстрые ссылки на правила ввоза лекарств по странам.
+- Напоминания в календаре: документы, страховка, check-in, визы.
+- Дополнительные категории сборов: хайкинг, лыжи, дайвинг, фестивали.
+- Подсказки по языкам для каждой страны: официальный язык, полезные локальные языки, нужен ли офлайн-переводчик и базовый разговорник.
+- Подсказки по оплате для каждой страны: где удобнее карта, где нужны наличные, какие платежные системы и кошельки чаще работают.
+- Web app для iPhone: PWA-режим, установка на экран "Домой", офлайн-доступ к чеклисту и сохраненным поездкам.
+- Дополнительные языки интерфейса: испанский, немецкий, французский, турецкий, китайский, японский, корейский, арабский и португальский.
