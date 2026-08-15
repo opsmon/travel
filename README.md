@@ -148,4 +148,13 @@ Progress is local to one browser and is not synchronised between devices. Shared
 
 ## Possible next steps
 
-PWA/offline mode, multiple saved trips, text/PDF export, approximate baggage weight and additional languages.
+- PWA/offline mode with install prompt and cached country data.
+- Multiple saved trips with names, dates and quick duplication.
+- Text, Markdown and PDF export.
+- Approximate baggage weight and volume estimate.
+- Family/shared checklist mode with invite links.
+- Country policy freshness badges and "review overdue" warnings.
+- Medicine/import rules quick links by country.
+- Calendar reminders for documents, insurance, check-in and visas.
+- Optional packing categories for hiking, skiing, diving and festivals.
+- Additional languages.
