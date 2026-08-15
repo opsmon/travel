@@ -19,6 +19,7 @@
   export let onAddCustom: (item: CustomItem) => void;
   export let onRemoveCustom: (id: string) => void;
   export let onReset: () => void;
+  export let onResetList: () => void;
   export let onEdit: () => void;
   export let notify: (message: string) => void;
 
@@ -105,6 +106,10 @@
     customDescription = "";
     showAdd = false;
   };
+
+  const resetList = () => {
+    if (window.confirm(t(locale, "resetListConfirm"))) onResetList();
+  };
 </script>
 
 <section class="checklist-section" id="checklist">
@@ -138,6 +143,7 @@
       <button type="button" on:click={() => window.print()}><span>⌁</span>{t(locale, "print")}</button>
       <button type="button" on:click={() => void share()}><span>↗</span>{t(locale, "share")}</button>
       <button class="danger-action" type="button" on:click={onReset}><span>↺</span>{t(locale, "reset")}</button>
+      <button class="danger-action" type="button" on:click={resetList}><span>⌫</span>{t(locale, "resetList")}</button>
     </div>
 
     {#if showAdd}

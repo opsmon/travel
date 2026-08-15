@@ -11,7 +11,7 @@
   import { t } from "./i18n.svelte";
   import type { CategoryId, CustomItem, Locale, StoredState, Template, TripConfig } from "./types.svelte";
   import { createChecklist } from "./utils/checklist.svelte";
-  import { loadState, saveState } from "./utils/storage.svelte";
+  import { defaultTrip, loadState, saveState } from "./utils/storage.svelte";
 
   const initial: StoredState = loadState();
 
@@ -129,6 +129,18 @@
     next.delete(id);
     completed = next;
   };
+
+  const resetList = () => {
+    trip = { ...defaultTrip };
+    completed = new Set();
+    customItems = [];
+    hideCompleted = false;
+    collapsed = new Set();
+    const params = new URLSearchParams();
+    params.set("lang", locale);
+    window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}#checklist`);
+    toast = t(locale, "listReset");
+  };
 </script>
 
 <Header locale={locale} onLocaleChange={changeLocale} onCreate={() => scrollTo("builder")} />
@@ -152,6 +164,7 @@
     onAddCustom={addCustom}
     onRemoveCustom={removeCustom}
     onReset={() => (completed = new Set())}
+    onResetList={resetList}
     onEdit={() => scrollTo("builder")}
     notify={(message) => (toast = message)}
   />
