@@ -8,6 +8,12 @@ const verify = (id: string, ru: string, en: string, sourceUrl: string) => ({
   sourceUrl,
   lastReviewed: reviewed,
 });
+const euSystems = () => verify(
+  "eu-ees-etias",
+  "Проверить EES и подготовку к ETIAS",
+  "Check EES and ETIAS preparation",
+  "https://travel-europe.europa.eu/en/",
+);
 
 export const countries: Option[] = [
   {
@@ -37,16 +43,16 @@ export const countries: Option[] = [
   },
   {
     id: "KZ", title: l("Казахстан", "Kazakhstan"), description: l("Степи и мегаполисы", "Steppes and cities"), symbol: "KZ",
-    sourceUrl: "https://www.gov.kz/", lastReviewed: reviewed, items: [
-      verify("kz-entry", "Проверить правила въезда", "Check entry rules", "https://www.gov.kz/"),
+    sourceUrl: "https://vmp.gov.kz/en/services/notice-service", lastReviewed: reviewed, items: [
+      verify("kz-entry", "Проверить правила въезда и уведомление о пребывании", "Check entry rules and stay notification", "https://vmp.gov.kz/en/services/notice-service"),
       item("kz-registration", "arrival", "Уточнить миграционный учет", "Check migration registration"),
       item("kz-climate", "clothes", "Одежда с учетом перепада температур", "Clothes for temperature changes"),
     ],
   },
   {
     id: "AM", title: l("Армения", "Armenia"), description: l("Горы и древние города", "Mountains and old cities"), symbol: "AM",
-    sourceUrl: "https://www.mfa.am/", lastReviewed: reviewed, items: [
-      verify("am-entry", "Проверить правила въезда", "Check entry rules", "https://www.mfa.am/"),
+    sourceUrl: "https://www.mfa.am/en/visa/", lastReviewed: reviewed, items: [
+      verify("am-entry", "Проверить визу, eVisa и временные освобождения", "Check visa, eVisa and temporary exemptions", "https://www.mfa.am/en/visa/"),
       item("am-cash", "money", "Местная валюта и наличные", "Local currency and cash"),
       item("am-mountain-layer", "clothes", "Теплый слой для гор", "Warm layer for the mountains"),
     ],
@@ -61,16 +67,16 @@ export const countries: Option[] = [
   },
   {
     id: "TR", title: l("Турция", "Türkiye"), description: l("Море и города", "Coast and cities"), symbol: "TR",
-    sourceUrl: "https://www.mfa.gov.tr/", lastReviewed: reviewed, items: [
-      verify("tr-entry", "Проверить срок действия паспорта", "Check passport validity rules", "https://www.mfa.gov.tr/"),
+    sourceUrl: "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa", lastReviewed: reviewed, items: [
+      verify("tr-entry", "Проверить визу, eVisa и срок действия паспорта", "Check visa, eVisa and passport validity rules", "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa"),
       item("tr-transfer", "bookings", "Трансфер из аэропорта", "Airport transfer"),
       item("tr-medicine", "health", "Проверить правила ввоза лекарств", "Check medication import rules"),
     ],
   },
   {
     id: "AE", title: l("ОАЭ", "United Arab Emirates"), description: l("Жара и современный город", "Heat and modern cities"), symbol: "AE",
-    sourceUrl: "https://u.ae/", lastReviewed: reviewed, items: [
-      verify("ae-entry", "Проверить правила въезда", "Check entry rules", "https://u.ae/"),
+    sourceUrl: "https://u.ae/en/information-and-services/visa-and-emirates-id/tourist-visa", lastReviewed: reviewed, items: [
+      verify("ae-entry", "Проверить визовый режим и туристическую визу", "Check visa regime and tourist visa", "https://u.ae/en/information-and-services/visa-and-emirates-id/tourist-visa"),
       item("ae-modest-clothes", "clothes", "Одежда с учетом местных норм", "Clothing mindful of local customs"),
       item("ae-heat", "health", "Защита от жары и солнца", "Heat and sun protection"),
       item("ae-medicine", "health", "Проверить ограничения на лекарства", "Check medication restrictions"),
@@ -87,8 +93,8 @@ export const countries: Option[] = [
   },
   {
     id: "JP", title: l("Япония", "Japan"), description: l("Технологии и традиции", "Technology and tradition"), symbol: "JP",
-    sourceUrl: "https://www.mofa.go.jp/", lastReviewed: reviewed, items: [
-      verify("jp-entry", "Проверить правила въезда", "Check entry rules", "https://www.mofa.go.jp/"),
+    sourceUrl: "https://www.mofa.go.jp/j_info/visit/visa/visaonline.html", lastReviewed: reviewed, items: [
+      verify("jp-entry", "Проверить visa exemption или Japan eVISA", "Check visa exemption or Japan eVISA", "https://www.mofa.go.jp/j_info/visit/visa/visaonline.html"),
       item("jp-adapter", "electronics", "Переходник для розетки", "Power adapter"),
       item("jp-transport", "arrival", "Приложения и карта транспорта", "Transport apps and pass"),
       item("jp-translation", "electronics", "Офлайн-переводчик", "Offline translator"),
@@ -96,8 +102,8 @@ export const countries: Option[] = [
   },
   {
     id: "KR", title: l("Южная Корея", "South Korea"), description: l("Города и побережье", "Cities and coast"), symbol: "KR",
-    sourceUrl: "https://www.mofa.go.kr/", lastReviewed: reviewed, items: [
-      verify("kr-entry", "Проверить разрешение на въезд", "Check entry authorisation", "https://www.mofa.go.kr/"),
+    sourceUrl: "https://overseas.mofa.go.kr/us-en/brd/m_4500/view.do?seq=761106", lastReviewed: reviewed, items: [
+      verify("kr-entry", "Проверить K-ETA или временное освобождение", "Check K-ETA or temporary exemption", "https://overseas.mofa.go.kr/us-en/brd/m_4500/view.do?seq=761106"),
       item("kr-apps", "arrival", "Местные карты и транспорт", "Local maps and transport apps"),
       item("kr-adapter", "electronics", "Проверить переходник", "Check power adapter"),
     ],
@@ -106,6 +112,7 @@ export const countries: Option[] = [
     id: "DE", title: l("Германия", "Germany"), description: l("Европейские маршруты", "European routes"), symbol: "DE",
     sourceUrl: "https://www.auswaertiges-amt.de/", lastReviewed: reviewed, items: [
       verify("de-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.auswaertiges-amt.de/"),
+      euSystems(),
       item("de-accommodation", "documents", "Подтверждение проживания", "Proof of accommodation"),
       item("de-transit", "arrival", "Скачать приложение транспорта", "Download a transport app"),
     ],
@@ -114,14 +121,15 @@ export const countries: Option[] = [
     id: "IT", title: l("Италия", "Italy"), description: l("Искусство и побережье", "Art and coast"), symbol: "IT",
     sourceUrl: "https://www.esteri.it/", lastReviewed: reviewed, items: [
       verify("it-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.esteri.it/"),
+      euSystems(),
       item("it-bookings", "bookings", "Билеты в музеи заранее", "Pre-book museum tickets"),
       item("it-shoes", "shoes", "Удобная обувь для прогулок", "Comfortable walking shoes"),
     ],
   },
   {
     id: "US", title: l("США", "United States"), description: l("Большие расстояния", "Long distances"), symbol: "US",
-    sourceUrl: "https://travel.state.gov/", lastReviewed: reviewed, items: [
-      verify("us-entry", "Проверить визу или разрешение", "Check visa or authorisation", "https://travel.state.gov/"),
+    sourceUrl: "https://travel.state.gov/content/travel/en/us-visas/tourism-visit.html/visa", lastReviewed: reviewed, items: [
+      verify("us-entry", "Проверить визу, ESTA или ограничения въезда", "Check visa, ESTA or entry restrictions", "https://travel.state.gov/content/travel/en/us-visas/tourism-visit.html/visa"),
       item("us-adapter", "electronics", "Переходник для розетки", "Power adapter"),
       item("us-insurance", "documents", "Расширенная медицинская страховка", "Comprehensive medical insurance"),
       item("us-driving", "documents", "Проверить документы для аренды авто", "Check car rental documents"),
@@ -131,6 +139,7 @@ export const countries: Option[] = [
     id: "FR", title: l("Франция", "France"), description: l("Города, Альпы и побережье", "Cities, Alps and coast"), symbol: "FR",
     sourceUrl: "https://france-visas.gouv.fr/", lastReviewed: reviewed, items: [
       verify("fr-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://france-visas.gouv.fr/"),
+      euSystems(),
       item("fr-bookings", "bookings", "Забронировать популярные музеи и достопримечательности", "Pre-book popular museums and attractions"),
       item("fr-transport", "arrival", "Скачать приложения местного транспорта", "Download local transport apps"),
     ],
@@ -139,6 +148,7 @@ export const countries: Option[] = [
     id: "ES", title: l("Испания", "Spain"), description: l("Города, острова и пляжи", "Cities, islands and beaches"), symbol: "ES",
     sourceUrl: "https://www.exteriores.gob.es/", lastReviewed: reviewed, items: [
       verify("es-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.exteriores.gob.es/"),
+      euSystems(),
       item("es-heat", "health", "Подготовиться к жаре и активному солнцу", "Prepare for heat and strong sun"),
       item("es-bookings", "bookings", "Заранее забронировать популярные достопримечательности", "Pre-book popular attractions"),
     ],
@@ -147,6 +157,7 @@ export const countries: Option[] = [
     id: "PT", title: l("Португалия", "Portugal"), description: l("Океан, холмы и старые города", "Ocean, hills and old towns"), symbol: "PT",
     sourceUrl: "https://vistos.mne.gov.pt/en/", lastReviewed: reviewed, items: [
       verify("pt-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://vistos.mne.gov.pt/en/"),
+      euSystems(),
       item("pt-hills", "shoes", "Удобная обувь для холмов и брусчатки", "Comfortable shoes for hills and cobblestones"),
       item("pt-wind", "clothes", "Легкий слой от ветра у океана", "Light layer for coastal wind"),
     ],
@@ -155,6 +166,7 @@ export const countries: Option[] = [
     id: "GR", title: l("Греция", "Greece"), description: l("Острова и античные города", "Islands and ancient cities"), symbol: "GR",
     sourceUrl: "https://www.mfa.gr/en/visas/", lastReviewed: reviewed, items: [
       verify("gr-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.mfa.gr/en/visas/"),
+      euSystems(),
       item("gr-ferries", "bookings", "Проверить и забронировать паромы", "Check and book ferries"),
       item("gr-sun", "health", "Защита от солнца и жары", "Sun and heat protection"),
     ],
@@ -173,6 +185,7 @@ export const countries: Option[] = [
     id: "NL", title: l("Нидерланды", "Netherlands"), description: l("Каналы, музеи и велосипеды", "Canals, museums and bicycles"), symbol: "NL",
     sourceUrl: "https://www.netherlandsworldwide.nl/visa-the-netherlands", lastReviewed: reviewed, items: [
       verify("nl-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.netherlandsworldwide.nl/visa-the-netherlands"),
+      euSystems(),
       item("nl-bookings", "bookings", "Заранее забронировать популярные музеи", "Pre-book popular museums"),
       item("nl-rain", "clothes", "Легкая защита от дождя и ветра", "Light rain and wind protection"),
       item("nl-bikes", "arrival", "Учитывать велосипедные дорожки", "Stay aware of cycle lanes"),
@@ -182,6 +195,7 @@ export const countries: Option[] = [
     id: "AT", title: l("Австрия", "Austria"), description: l("Имперские города и Альпы", "Imperial cities and Alps"), symbol: "AT",
     sourceUrl: "https://www.bmeia.gv.at/en/travel-stay/entrance-and-residence-in-austria", lastReviewed: reviewed, items: [
       verify("at-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.bmeia.gv.at/en/travel-stay/entrance-and-residence-in-austria"),
+      euSystems(),
       item("at-transport", "arrival", "Скачать приложение общественного транспорта", "Download a public transport app"),
       item("at-mountain", "clothes", "Теплый слой для горных маршрутов", "Warm layer for mountain routes"),
     ],
@@ -190,6 +204,7 @@ export const countries: Option[] = [
     id: "CH", title: l("Швейцария", "Switzerland"), description: l("Озера, города и Альпы", "Lakes, cities and Alps"), symbol: "CH",
     sourceUrl: "https://www.eda.admin.ch/eda/en/fdfa/entry-switzerland-residence.html", lastReviewed: reviewed, items: [
       verify("ch-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.eda.admin.ch/eda/en/fdfa/entry-switzerland-residence.html"),
+      euSystems(),
       item("ch-transport", "bookings", "Спланировать железнодорожные маршруты и проездные", "Plan rail routes and passes"),
       item("ch-mountain-weather", "clothes", "Слои одежды для быстрой смены погоды", "Layers for rapidly changing mountain weather"),
     ],
@@ -198,6 +213,7 @@ export const countries: Option[] = [
     id: "CZ", title: l("Чехия", "Czechia"), description: l("Старинные города и замки", "Historic cities and castles"), symbol: "CZ",
     sourceUrl: "https://mzv.gov.cz/jnp/en/information_for_aliens/index.html", lastReviewed: reviewed, items: [
       verify("cz-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://mzv.gov.cz/jnp/en/information_for_aliens/index.html"),
+      euSystems(),
       item("cz-currency", "money", "Проверить валюту и безопасный обмен", "Check currency and safe exchange options"),
       item("cz-transport", "arrival", "Скачать приложение городского транспорта", "Download a city transport app"),
     ],
@@ -206,14 +222,15 @@ export const countries: Option[] = [
     id: "PL", title: l("Польша", "Poland"), description: l("Исторические города и Балтика", "Historic cities and Baltic coast"), symbol: "PL",
     sourceUrl: "https://www.gov.pl/web/diplomacy/visas", lastReviewed: reviewed, items: [
       verify("pl-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.gov.pl/web/diplomacy/visas"),
+      euSystems(),
       item("pl-currency", "money", "Проверить валюту и способы оплаты", "Check currency and payment options"),
       item("pl-transport", "arrival", "Скачать приложения поездов и городского транспорта", "Download rail and city transport apps"),
     ],
   },
   {
     id: "CN", title: l("Китай", "China"), description: l("Мегаполисы и древняя культура", "Megacities and ancient culture"), symbol: "CN",
-    sourceUrl: "https://www.mfa.gov.cn/eng/", lastReviewed: reviewed, items: [
-      verify("cn-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.mfa.gov.cn/eng/"),
+    sourceUrl: "https://www.mfa.gov.cn/mfa_eng/xw/fyrbt/fyrbt/202602/t20260215_11860467.html", lastReviewed: reviewed, items: [
+      verify("cn-entry", "Проверить визу, транзит или временный безвизовый режим", "Check visa, transit or temporary visa-free policy", "https://www.mfa.gov.cn/mfa_eng/xw/fyrbt/fyrbt/202602/t20260215_11860467.html"),
       item("cn-payments", "money", "Подготовить доступные способы оплаты", "Prepare locally supported payment methods"),
       item("cn-translation", "electronics", "Скачать офлайн-переводчик", "Download an offline translator"),
       item("cn-connectivity", "electronics", "Заранее проверить доступ к нужным сервисам", "Check access to essential online services in advance"),
@@ -239,8 +256,8 @@ export const countries: Option[] = [
   },
   {
     id: "MY", title: l("Малайзия", "Malaysia"), description: l("Тропики и современные города", "Tropics and modern cities"), symbol: "MY",
-    sourceUrl: "https://www.imi.gov.my/", lastReviewed: reviewed, items: [
-      verify("my-entry", "Проверить правила въезда и декларации", "Check entry rules and declarations", "https://www.imi.gov.my/"),
+    sourceUrl: "https://www.imi.gov.my/index.php/en/pengumuman/malaysia-digital-arrival-card-mdac/", lastReviewed: reviewed, items: [
+      verify("my-entry", "Проверить MDAC и правила въезда", "Check MDAC and entry rules", "https://www.imi.gov.my/index.php/en/pengumuman/malaysia-digital-arrival-card-mdac/"),
       item("my-adapter", "electronics", "Переходник для местной розетки", "Local power adapter"),
       item("my-rain", "luggage", "Компактная защита от тропического дождя", "Compact tropical rain protection"),
       item("my-sim", "arrival", "Подготовить SIM-карту или eSIM", "Plan a SIM card or eSIM"),
@@ -249,7 +266,7 @@ export const countries: Option[] = [
   {
     id: "SG", title: l("Сингапур", "Singapore"), description: l("Город-государство в тропиках", "Tropical city-state"), symbol: "SG",
     sourceUrl: "https://www.ica.gov.sg/enter-transit-depart/entering-singapore", lastReviewed: reviewed, items: [
-      verify("sg-entry", "Проверить правила въезда и электронную декларацию", "Check entry rules and electronic arrival declaration", "https://www.ica.gov.sg/enter-transit-depart/entering-singapore"),
+      verify("sg-entry", "Проверить SG Arrival Card и требования посадки", "Check SG Arrival Card and boarding requirements", "https://www.ica.gov.sg/enter-transit-depart/entering-singapore"),
       item("sg-medicine", "health", "Проверить ограничения на лекарства", "Check medication restrictions"),
       item("sg-adapter", "electronics", "Переходник для местной розетки", "Local power adapter"),
       item("sg-heat-rain", "clothes", "Легкая одежда и защита от дождя", "Light clothes and rain protection"),
@@ -267,7 +284,7 @@ export const countries: Option[] = [
   {
     id: "CA", title: l("Канада", "Canada"), description: l("Большие города и дикая природа", "Big cities and wilderness"), symbol: "CA",
     sourceUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html", lastReviewed: reviewed, items: [
-      verify("ca-entry", "Проверить визу или электронное разрешение", "Check visa or electronic travel authorisation", "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html"),
+      verify("ca-entry", "Проверить визу, eTA и временные ограничения", "Check visa, eTA and temporary restrictions", "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html"),
       item("ca-insurance", "documents", "Расширенная медицинская страховка", "Comprehensive medical insurance"),
       item("ca-weather", "clothes", "Одежда для местного сезона и перепадов температуры", "Clothes for the local season and temperature changes"),
       item("ca-distance", "bookings", "Спланировать транспорт на больших расстояниях", "Plan transport across long distances"),
@@ -284,8 +301,8 @@ export const countries: Option[] = [
   },
   {
     id: "BR", title: l("Бразилия", "Brazil"), description: l("Океан, мегаполисы и тропики", "Ocean, megacities and tropics"), symbol: "BR",
-    sourceUrl: "https://www.gov.br/mre/en", lastReviewed: reviewed, items: [
-      verify("br-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.gov.br/mre/en"),
+    sourceUrl: "https://www.gov.br/mre/pt-br/consulado-chicago/Visas/types-of-visa-1/vivis-visitor-visa", lastReviewed: reviewed, items: [
+      verify("br-entry", "Проверить VIVIS или eVisa", "Check VIVIS or eVisa", "https://www.gov.br/mre/pt-br/consulado-chicago/Visas/types-of-visa-1/vivis-visitor-visa"),
       item("br-repellent", "health", "Средство от насекомых", "Insect repellent"),
       item("br-adapter", "electronics", "Проверить тип розетки и напряжение", "Check socket type and voltage"),
       item("br-insurance", "documents", "Медицинская страховка для поездки", "Travel medical insurance"),
@@ -293,8 +310,8 @@ export const countries: Option[] = [
   },
   {
     id: "AU", title: l("Австралия", "Australia"), description: l("Океан, города и большие расстояния", "Ocean, cities and long distances"), symbol: "AU",
-    sourceUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-finder", lastReviewed: reviewed, items: [
-      verify("au-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-finder"),
+    sourceUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601", lastReviewed: reviewed, items: [
+      verify("au-entry", "Проверить ETA, eVisitor или Visitor visa", "Check ETA, eVisitor or Visitor visa", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601"),
       item("au-biosecurity", "documents", "Проверить требования биобезопасности и декларации", "Check biosecurity and declaration requirements"),
       item("au-sun", "health", "Защита от сильного солнца", "Protection from strong sun"),
       item("au-adapter", "electronics", "Переходник для местной розетки", "Local power adapter"),
@@ -302,8 +319,8 @@ export const countries: Option[] = [
   },
   {
     id: "NZ", title: l("Новая Зеландия", "New Zealand"), description: l("Горы, океан и автопутешествия", "Mountains, ocean and road trips"), symbol: "NZ",
-    sourceUrl: "https://www.immigration.govt.nz/", lastReviewed: reviewed, items: [
-      verify("nz-entry", "Проверить визу или электронное разрешение", "Check visa or electronic travel authorisation", "https://www.immigration.govt.nz/"),
+    sourceUrl: "https://www.immigration.govt.nz/visas/new-zealand-electronic-travel-authority-nzeta/", lastReviewed: reviewed, items: [
+      verify("nz-entry", "Проверить NZeTA или Visitor Visa", "Check NZeTA or Visitor Visa", "https://www.immigration.govt.nz/visas/new-zealand-electronic-travel-authority-nzeta/"),
       item("nz-biosecurity", "documents", "Проверить требования биобезопасности и декларации", "Check biosecurity and declaration requirements"),
       item("nz-weather", "clothes", "Слои одежды и защита от дождя", "Clothing layers and rain protection"),
       item("nz-left-driving", "car", "Учесть левостороннее движение", "Prepare for left-hand traffic"),
@@ -329,8 +346,8 @@ export const countries: Option[] = [
   },
   {
     id: "ZA", title: l("ЮАР", "South Africa"), description: l("Города, океан и сафари", "Cities, ocean and safari"), symbol: "ZA",
-    sourceUrl: "https://www.dha.gov.za/index.php/immigration-services", lastReviewed: reviewed, items: [
-      verify("za-entry", "Проверить визу и правила въезда", "Check visa and entry rules", "https://www.dha.gov.za/index.php/immigration-services"),
+    sourceUrl: "https://eta.dha.gov.za/", lastReviewed: reviewed, items: [
+      verify("za-entry", "Проверить ETA, eVisa или visa exemption", "Check ETA, eVisa or visa exemption", "https://eta.dha.gov.za/"),
       item("za-insurance", "documents", "Расширенная медицинская страховка", "Comprehensive medical insurance"),
       item("za-adapter", "electronics", "Проверить тип розетки и переходник", "Check socket type and adapter"),
       item("za-driving", "documents", "Проверить документы и условия аренды авто", "Check driving documents and car rental terms"),
